@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilhas | Tech & Code Summit</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+    <h1>Trilhas de Conteúdo</h1>
+    <!-- Feedback visual enquanto busca na API -->
+    <div class="grid" id="trilhas">
+      <p>Carregando trilhas de conteúdo...</p>
+    </div>
+  </main>
+  <script src="js/app.js"></script>
+  <script>
+    API("/trilhas")
+      .then((ts) => {
+        const container = document.getElementById("trilhas");
+        
+        // Verifica se a lista de trilhas está vazia
+        if (ts.length === 0) {
+           container.innerHTML = "<p>Nenhuma trilha encontrada.</p>";
+           return;
+        }
+
+        container.innerHTML = ts.map((t) => `
+          <a class="card" href="trilha.html?id=${t.id}">
+            <div style="font-size:2.5rem">${t.icone}</div>
+            <h3 style="color:#fff">${t.nome}</h3>
+            <p style="color:var(--muted)">${t.resumo}</p>
+          </a>`).join("");
+      })
+      .catch((erro) => {
+        console.error("Erro ao carregar as trilhas:", erro);
+        document.getElementById("trilhas").innerHTML = `<p style="color: #f87171;">Erro ao carregar as trilhas. O servidor está rodando?</p>`;
+      });
+  </script>
+</body>
+</html>

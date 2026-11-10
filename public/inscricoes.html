@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscrições | Tech & Code Summit</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+    <h1>Inscrições e Credenciamento</h1>
+    <h2>Lotes de ingressos</h2>
+    <div class="grid" id="lotes"></div>
+    <h2>Orientações gerais</h2>
+    <ul style="margin-left:1.5rem">
+      <li>O credenciamento abre às 08h00 de cada dia do evento.</li>
+      <li>Apresente o protocolo de inscrição e um documento com foto.</li>
+      <li>Meia-entrada: leve o comprovante de matrícula.</li>
+      <li>Workshops têm vagas limitadas e são reservados por ordem de chegada.</li>
+      <li>Ingressos são pessoais e intransferíveis.</li>
+    </ul>
+  </main>
+  <script src="js/app.js"></script>
+  <script>
+    API("/lotes").then((lotes) => {
+      document.getElementById("lotes").innerHTML = lotes.map((l) => `
+        <div class="card">
+          <h3>${l.nome}</h3>
+          <div class="preco">${brl(l.preco)}</div>
+          <p>${l.prazo}</p><br>
+          ${l.ativo
+            ? `<a class="btn" href="pagamento.html?lote=${l.id}">Comprar</a>`
+            : `<button class="btn" disabled>Esgotado</button>`}
+        </div>`).join("");
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech & Code Summit 2026</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <section class="hero">
+    <h1 id="nome"></h1>
+    <p id="slogan"></p>
+    <p><strong id="datas"></strong> · <span id="cidade"></span></p>
+    <div class="contador" id="contador"></div>
+    <a href="inscricoes.html" class="btn">Garanta sua vaga</a>
+  </section>
+  <main>
+    <h2>Sobre o evento</h2>
+    <p id="descricao"></p>
+    <h2>Impacto para a comunidade</h2>
+    <div class="grid" id="impacto"></div>
+  </main>
+  <script src="js/app.js"></script>
+  <script>
+    API("/evento")
+      .then((e) => {
+        ["nome", "slogan", "datas", "cidade", "descricao"].forEach((k) => (document.getElementById(k).textContent = e[k]));
+        
+        document.getElementById("impacto").innerHTML = e.impacto
+          .map((i) => `<div class="card" style="text-align:center"><div class="preco">${i.numero}</div>${i.texto}</div>`).join("");
+        
+        const alvo = new Date(e.dataInicio);
+        let intervalo;
+
+        const tick = () => {
+          const d = Math.max(0, alvo - new Date());
+          
+          if (d === 0 && intervalo) {
+            clearInterval(intervalo);
+          }
+
+          const v = [d / 864e5, (d / 36e5) % 24, (d / 6e4) % 60, (d / 1e3) % 60].map(Math.floor);
+          document.getElementById("contador").innerHTML = ["Dias", "Horas", "Min", "Seg"]
+            .map((l, i) => `<div><span>${v[i]}</span>${l}</div>`).join("");
+        };
+        
+        tick(); 
+        intervalo = setInterval(tick, 1000); 
+      })
+      .catch((erro) => {
+        console.error("Erro ao carregar os dados:", erro);
+        document.querySelector(".hero").innerHTML = "<h1>Erro ao carregar o evento.</h1><p>Verifique se o servidor está rodando.</p>";
+      });
+  </script>
+</body>
+</html>

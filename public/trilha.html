@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha | Tech & Code Summit</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main id="conteudo"><p>Carregando...</p></main>
+  <script src="js/app.js"></script>
+  <script>
+    const id = new URLSearchParams(location.search).get("id");
+    API("/trilhas/" + id).then((t) => {
+      document.title = t.nome + " | Tech & Code Summit";
+      document.getElementById("conteudo").innerHTML = `
+        <a href="trilhas.html">← Voltar às trilhas</a>
+        <h1>${t.icone} ${t.nome}</h1>
+        <p>${t.descricao}</p>
+        <h2>Palestrantes</h2>
+        <div class="grid">${t.palestrantes.map((p) => `
+          <div class="card" style="text-align:center">
+            <img src="${p.foto}" alt="${p.nome}">
+            <h3>${p.nome}</h3>
+            <p style="color:var(--sec)">${p.cargo}</p>
+            <p>${p.bio}</p><br>
+            <p><strong>🎤 ${p.palestra}</strong></p>
+          </div>`).join("")}
+        </div>`;
+    }).catch(() => {
+      document.getElementById("conteudo").innerHTML = "<h1>Trilha não encontrada</h1><a href='trilhas.html'>Voltar</a>";
+    });
+  </script>
+</body>
+</html>

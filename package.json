@@ -1,0 +1,12 @@
+{
+  "name": "tech-code-summit",
+  "version": "1.0.0",
+  "description": "Portal oficial do Tech & Code Summit 2026",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "evento": {
+    "nome": "Tech & Code Summit 2026",
+    "slogan": "Onde o código encontra o futuro",
+    "dataInicio": "2026-12-03T09:00:00-03:00",
+    "datas": "03 a 05 de dezembro de 2026",
+    "cidade": "São Paulo - SP",
+    "descricao": "Três dias de palestras, workshops e networking que reúnem desenvolvedores, pesquisadores, startups e empresas para discutir o futuro da tecnologia.",
+    "impacto": [
+      { "numero": "5.000+", "texto": "participantes esperados" },
+      { "numero": "80", "texto": "palestras e workshops" },
+      { "numero": "6", "texto": "trilhas de conteúdo" },
+      { "numero": "40", "texto": "estandes de empresas" }
+    ]
+  },
+  "lotes": [
+    { "id": "lote1", "nome": "1º Lote", "preco": 149.9, "prazo": "até 31/10/2026", "ativo": false },
+    { "id": "lote2", "nome": "2º Lote", "preco": 199.9, "prazo": "até 20/11/2026", "ativo": true },
+    { "id": "lote3", "nome": "3º Lote", "preco": 249.9, "prazo": "até 02/12/2026", "ativo": true },
+    { "id": "estudante", "nome": "Estudante (meia)", "preco": 99.9, "prazo": "mediante comprovante", "ativo": true }
+  ],
+  "trilhas": [
+    {
+      "id": "engenharia",
+      "nome": "Engenharia de Software",
+      "icone": "🛠️",
+      "resumo": "Arquitetura, DevOps, testes e boas práticas.",
+      "descricao": "Microsserviços, Clean Architecture, CI/CD, observabilidade e cultura DevOps aplicadas a projetos reais.",
+      "palestrantes": [
+        { "nome": "Marina Albuquerque", "cargo": "Staff Engineer", "foto": "/img/palestrantefem002.jpeg", "bio": "15 anos construindo sistemas distribuídos em fintechs.", "palestra": "Do monolito aos microsserviços sem dor" },
+        { "nome": "Ricardo Tavares", "cargo": "Head de DevOps", "foto": "/img/palestrante002.jpeg", "bio": "Especialista em Kubernetes e automação de infraestrutura.", "palestra": "Pipelines CI/CD que escalam" }
+      ]
+    },
+    {
+      "id": "ia",
+      "nome": "Inteligência Artificial",
+      "icone": "🤖",
+      "resumo": "Machine Learning, LLMs e IA responsável.",
+      "descricao": "Modelos de linguagem, visão computacional, MLOps e ética no uso de IA.",
+      "palestrantes": [
+        { "nome": "Dra. Helena Costa", "cargo": "Pesquisadora em ML", "foto": "/img/palestrantefem003.jpeg", "bio": "Doutora em Ciência da Computação, atua com NLP em português.", "palestra": "LLMs em produção: desafios reais" },
+        { "nome": "Bruno Nakamura", "cargo": "ML Engineer", "foto": "/img/Palestrante001.jpg", "bio": "Trabalha com visão computacional aplicada ao agronegócio.", "palestra": "Visão computacional no campo" }
+      ]
+    },
+    {
+      "id": "mobile",
+      "nome": "Mobile",
+      "icone": "📱",
+      "resumo": "Android, iOS, Flutter e React Native.",
+      "descricao": "Desenvolvimento nativo e multiplataforma, UX mobile e publicação nas lojas.",
+      "palestrantes": [
+        { "nome": "Camila Rocha", "cargo": "Tech Lead Mobile", "foto": "/img/Palestrantefem001.jpeg", "bio": "Lidera times de apps com milhões de usuários.", "palestra": "Flutter vs React Native em 2026" }
+      ]
+    },
+    {
+      "id": "iot",
+      "nome": "Embarcados / IoT",
+      "icone": "🔌",
+      "resumo": "Microcontroladores, sensores e cidades inteligentes.",
+      "descricao": "ESP32, Arduino, protocolos MQTT, edge computing e projetos de automação.",
+      "palestrantes": [
+        { "nome": "Eduardo Lima", "cargo": "Engenheiro de Embarcados", "foto": "/img/palestrante003.jpeg", "bio": "Desenvolve soluções IoT para indústria 4.0.", "palestra": "ESP32 + MQTT na prática" }
+      ]
+    },
+    {
+      "id": "seguranca",
+      "nome": "Segurança da Informação",
+      "icone": "🔐",
+      "resumo": "AppSec, pentest e LGPD.",
+      "descricao": "Segurança de aplicações, análise de vulnerabilidades e privacidade de dados.",
+      "palestrantes": [
+        { "nome": "Fernanda Souza", "cargo": "Security Analyst", "foto": "img/palestrantefem004.jpeg", "bio": "Bug hunter e instrutora de segurança ofensiva.", "palestra": "OWASP Top 10 explicado com exemplos" }
+      ]
+    },
+    {
+      "id": "web",
+      "nome": "Desenvolvimento Web",
+      "icone": "🌐",
+      "resumo": "Frontend, backend e APIs modernas.",
+      "descricao": "Frameworks JavaScript, acessibilidade, performance e APIs REST/GraphQL.",
+      "palestrantes": [
+        { "nome": "Lucas Ferreira", "cargo": "Full Stack Developer", "foto": "img/palestrante004.jpeg", "bio": "Criador de conteúdo e mantenedor open source.", "palestra": "Performance web: do Lighthouse ao usuário" }
+      ]
+    }
+  ],
+  "programacao": [
+    { "dia": "03/12", "hora": "09:00", "tipo": "Abertura", "titulo": "Cerimônia de abertura", "local": "Palco Principal", "trilha": "-" },
+    { "dia": "03/12", "hora": "10:00", "tipo": "Palestra", "titulo": "LLMs em produção: desafios reais", "local": "Palco Principal", "trilha": "Inteligência Artificial" },
+    { "dia": "03/12", "hora": "14:00", "tipo": "Workshop", "titulo": "ESP32 + MQTT na prática", "local": "Lab Maker", "trilha": "Embarcados / IoT" },
+    { "dia": "04/12", "hora": "09:30", "tipo": "Palestra", "titulo": "Da monolito aos microsserviços sem dor", "local": "Palco Code", "trilha": "Engenharia de Software" },
+    { "dia": "04/12", "hora": "11:00", "tipo": "Minicurso", "titulo": "Flutter do zero (parte 1)", "local": "Sala 2", "trilha": "Mobile" },
+    { "dia": "04/12", "hora": "15:00", "tipo": "Palestra", "titulo": "OWASP Top 10 explicado com exemplos", "local": "Palco Future", "trilha": "Segurança da Informação" },
+    { "dia": "05/12", "hora": "10:00", "tipo": "Workshop", "titulo": "Pipelines CI/CD que escalam", "local": "Lab Cloud", "trilha": "Engenharia de Software" },
+    { "dia": "05/12", "hora": "14:00", "tipo": "Palestra", "titulo": "Performance web: do Lighthouse ao usuário", "local": "Palco Code", "trilha": "Desenvolvimento Web" },
+    { "dia": "05/12", "hora": "17:00", "tipo": "Encerramento", "titulo": "Premiação do Hackathon e encerramento", "local": "Palco Principal", "trilha": "-" }
+  ],
+  "local": {
+    "nome": "Centro de Convenções Tech Hub",
+    "endereco": "Av. da Inovação, 2000 - São Paulo/SP",
+    "areas": [
+      { "nome": "Palco Principal", "icone": "🎤", "descricao": "Capacidade para 2.000 pessoas, keynotes e abertura." },
+      { "nome": "Palcos Code e Future", "icone": "🎙️", "descricao": "Palcos simultâneos com 500 lugares cada." },
+      { "nome": "Labs e Salas", "icone": "💻", "descricao": "Workshops e minicursos com computadores e bancadas maker." },
+      { "nome": "Área de Estandes", "icone": "🏢", "descricao": "40 estandes de empresas, startups e universidades." },
+      { "nome": "Praça de Alimentação", "icone": "🍔", "descricao": "Food trucks, cafés e área de descanso." }
+    ]
+  },
+ "equipe": [
+  { 
+    "nome": "Antonio Erick Gomes da Silva", 
+    "ra": "123456", 
+    "foto": "img/antonioerick.png", 
+    "tecnologias": "HTML, CSS, JavaScript, Node.js" 
+  }
+]
+}

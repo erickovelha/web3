@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagamento | Tech & Code Summit</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+    <h1>💳 Pagamento (simulado)</h1>
+    <form id="form">
+      <input name="nome" placeholder="Nome completo" required>
+      <input name="email" type="email" placeholder="E-mail" required>
+      <input name="cpf" placeholder="CPF" required maxlength="14">
+      <select name="lote" id="lote" required></select>
+      <input placeholder="Número do cartão (fictício)" required>
+      <button class="btn">Confirmar pagamento</button>
+    </form>
+    <div id="resultado"></div>
+  </main>
+  <script src="js/app.js"></script>
+  <script>
+    const loteURL = new URLSearchParams(location.search).get("lote");
+    API("/lotes").then((lotes) => {
+      document.getElementById("lote").innerHTML = lotes.filter((l) => l.ativo)
+        .map((l) => `<option value="${l.id}" ${l.id === loteURL ? "selected" : ""}>${l.nome} - ${brl(l.preco)}</option>`).join("");
+    });
+    document.getElementById("form").addEventListener("submit", async (ev) => {
+      ev.preventDefault();
+      const dados = Object.fromEntries(new FormData(ev.target));
+      const r = await fetch("/api/inscricoes", {
+        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(dados)
+      });
+      const json = await r.json();
+      document.getElementById("resultado").innerHTML = r.ok
+        ? `<div class="card"><h2>✅ Inscrição confirmada!</h2><p>Protocolo: <strong>${json.protocolo}</strong></p><p>Valor: ${brl(json.valor)}</p></div>`
+        : `<p style="color:#f87171">${json.erro}</p>`;
+      if (r.ok) ev.target.reset();
+    });
+  </script>
+</body>
+</html>

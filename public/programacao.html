@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programação | Tech & Code Summit</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+    <h1>Programação Oficial</h1>
+    <div class="filtros" id="filtros">
+      <button data-dia="" class="ativo">Todos</button>
+      <button data-dia="03/12">03/12</button>
+      <button data-dia="04/12">04/12</button>
+      <button data-dia="05/12">05/12</button>
+    </div>
+    <table>
+      <thead><tr><th>Dia</th><th>Hora</th><th>Tipo</th><th>Atividade</th><th>Local</th><th>Trilha</th></tr></thead>
+      <tbody id="tabela"></tbody>
+    </table>
+  </main>
+  <script src="js/app.js"></script>
+  <script>
+    function carregar(dia = "") {
+      API("/programacao" + (dia ? "?dia=" + encodeURIComponent(dia) : "")).then((p) => {
+        document.getElementById("tabela").innerHTML = p.map((i) =>
+          `<tr><td>${i.dia}</td><td>${i.hora}</td><td>${i.tipo}</td><td>${i.titulo}</td><td>${i.local}</td><td>${i.trilha}</td></tr>`).join("");
+      });
+    }
+    document.getElementById("filtros").addEventListener("click", (e) => {
+      if (e.target.tagName !== "BUTTON") return;
+      document.querySelectorAll(".filtros button").forEach((b) => b.classList.remove("ativo"));
+      e.target.classList.add("ativo");
+      carregar(e.target.dataset.dia);
+    });
+    carregar();
+  </script>
+</body>
+</html>

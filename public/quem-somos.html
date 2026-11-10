@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quem Somos | Tech & Code Summit</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+    <h1>Quem Somos</h1>
+    <p>Equipe responsável pelo desenvolvimento do portal.</p>
+    <div class="grid" id="equipe" style="margin-top:2rem"></div>
+  </main>
+  <script src="js/app.js"></script>
+  <script>
+    API("/equipe").then((eq) => {
+      document.getElementById("equipe").innerHTML = eq.map((m) => `
+        <div class="card" style="text-align:center">
+          <img src="${m.foto}" alt="${m.nome}">
+          <h3>${m.nome}</h3>
+          <p style="color:var(--muted)">RA: ${m.ra}</p><br>
+          <p>${m.tecnologias}</p>
+        </div>`).join("");
+    });
+  </script>
+</body>
+</html>
+
+

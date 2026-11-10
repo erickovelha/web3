@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local | Tech & Code Summit</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+    <h1>Local e Infraestrutura</h1>
+    <p id="endereco"></p>
+    <h2>Mapa do evento</h2>
+    <div class="mapa">
+      <div class="principal">🎤 Palco Principal</div>
+      <div class="estandes">🏢 Área de Estandes</div>
+      <div>🎙️ Palco Code</div>
+      <div>🎙️ Palco Future</div>
+      <div class="food">🍔 Praça de Alimentação · 💻 Labs e Salas</div>
+    </div>
+    <h2>Espaços</h2>
+    <div class="grid" id="areas"></div>
+  </main>
+  <script src="js/app.js"></script>
+  <script>
+    API("/local").then((l) => {
+      document.getElementById("endereco").innerHTML = `<strong>${l.nome}</strong> — ${l.endereco}`;
+      document.getElementById("areas").innerHTML = l.areas
+        .map((a) => `<div class="card"><div style="font-size:2rem">${a.icone}</div><h3>${a.nome}</h3><p>${a.descricao}</p></div>`).join("");
+    });
+  </script>
+</body>
+</html>
